@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">mykotlinmvp</string>
+    <string name="st_qingqiu">请求</string>
+    <string name="st_zhongzhi">中止</string>
+</resources>

@@ -1,0 +1,62 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    /** 协程*/
+    api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
+
+    /*Rxjava依赖*/
+    api "io.reactivex.rxjava2:rxjava:2.2.8" // 必要rxjava2依赖
+    api "io.reactivex.rxjava2:rxandroid:2.1.1" // 必要rxandrroid依赖，切线程时需要用到
+
+    /*retrofit依赖*/
+    api 'com.squareup.retrofit2:retrofit:2.6.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.5.0' // 必要依赖，和Rxjava结合必须用到，下面会提到
+    api 'com.squareup.retrofit2:converter-gson:2.6.0'
+    //api 'org.ligboy.retrofit2:converter-fastjson-android:2.2.0'// 必要依赖，解析json
+    api 'com.alibaba:fastjson:1.1.71.android'
+
+
+    /*RxLifecycle基础库，防止发生内存泄漏的*/
+    api 'com.trello.rxlifecycle3:rxlifecycle:3.0.0'
+    api 'com.trello.rxlifecycle3:rxlifecycle-components:3.0.0'
+
+
+
+}
+repositories {
+    mavenCentral()
+}
